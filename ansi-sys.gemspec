@@ -2,19 +2,18 @@ version = '0.8.4'
 
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
-  s.name        = 'ansi-sys'
+  s.name        = 'ansi-sys-revived'
   s.version     = version
-  s.summary     = 'Full-stack web application framework.'
-  s.description = 'ansi-sys'
+  s.summary     = 'A library to render texts with ANSI escape sequences. Revived from RubyForge.'
 
   s.required_ruby_version     = '>= 1.9.3'
   s.required_rubygems_version = '>= 1.8.11'
 
-  s.license = 'MIT'
+  s.license = 'GNU GPL v3'
 
-  s.author   = '?'
-  s.email    = '?'
-  s.homepage = '?'
+  s.author   = 'Damian Nowak'
+  s.email    = 'nowaker@pacmanvps.com'
+  s.homepage = 'https://github.com/Nowaker/ruby-ansi-sys-revived'
 
-  s.files = ['README.md'] + Dir['guides/**/*']
+  s.files = `git ls-files lib`.split($/)
 end
