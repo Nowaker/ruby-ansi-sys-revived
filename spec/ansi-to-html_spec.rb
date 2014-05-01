@@ -1,3 +1,6 @@
+require 'spec_helper'
+
+
 script = File.join('bin', 'ansi-to-html')
 source = File.join('spec', 'attach', 'test_utf8_wide.txt')
 target = File.join('spec', 'attach', 'test_utf8_wide.rendered.txt')

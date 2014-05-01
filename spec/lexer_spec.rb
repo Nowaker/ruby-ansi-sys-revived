@@ -1,5 +1,5 @@
-$:.unshift('lib')
-require 'ansisys'
+require 'spec_helper'
+
 
 include AnsiSys
 describe Lexer::PARAMETER_AND_LETTER, "a regexp for parameters and a letter" do

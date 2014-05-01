@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 #
 # ansi-to-html: command to convert ANSI-escaped texts to HTML fragments
 #

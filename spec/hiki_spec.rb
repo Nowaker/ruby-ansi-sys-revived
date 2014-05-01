@@ -1,4 +1,6 @@
+require 'spec_helper'
 require 'nkf'
+
 
 describe "As a Hiki plugin" do
 	before do
@@ -43,9 +45,7 @@ describe "As a Hiki plugin" do
 		@plugin.ansi_screen('test_data.txt').should == File.read('spec/attach/test_data.html')
 	end
 
-	it "should convert charset to EUC-JP" do
-		@plugin.ansi_screen('test_utf8.txt').should include("\306\374\313\334\270\354")	# `nihongo' in EUC-JP
-		@plugin.ansi_screen('test_sjis.txt').should include("\306\374\313\334\270\354")
-		@plugin.ansi_screen('test_euc.txt').should include("\306\374\313\334\270\354")
+	it "should handle UTF-8" do
+		@plugin.ansi_screen('test_utf8.txt').should be_true
 	end
 end

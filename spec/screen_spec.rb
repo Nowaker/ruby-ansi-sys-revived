@@ -1,5 +1,6 @@
-$:.unshift('lib')
-require 'ansisys'
+require 'spec_helper'
+
+
 unless defined?(:SGR)
 	class SGR
 	end
@@ -82,7 +83,7 @@ _SCREEN
 	end
 end
 
-describe "screen with default colors set", :shared => true do
+shared_examples_for "screen with default colors set" do
 	it "should only specify colors of special color letters when rendered as HTML" do
 		@screen.render(:html).should == <<_SCREEN.chomp
 <pre class="screen">\n<span style="color: green">:)</span>hello</pre>
@@ -104,7 +105,7 @@ describe Screen, "with default colors" do
 		@screen.write(')', 1, 2, 1, @sgr)
 	end
 
-	it_should_behave_like "screen with default colors set"
+  it_behaves_like "screen with default colors set"
 
 	it "should have default css style with silver letters on black background" do
 		css = @screen.css_style
@@ -127,7 +128,7 @@ describe Screen, "with inverted colors" do
 		@screen.write(')', 1, 2, 1, @sgr)
 	end
 
-	it_should_behave_like "screen with default colors set"
+  it_behaves_like "screen with default colors set"
 
 	it "should have default css style with black letters on white background" do
 		css = @screen.css_style

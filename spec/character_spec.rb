@@ -1,5 +1,5 @@
-$:.unshift('lib')
-require 'ansisys'
+require 'spec_helper'
+
 
 include AnsiSys
 # This spec is dependent upon Screen, Cursor, and SGR

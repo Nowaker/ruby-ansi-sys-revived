@@ -1,5 +1,5 @@
-$:.unshift('lib')
-require 'ansisys'
+require 'spec_helper'
+
 
 include AnsiSys
 describe SGR, 'when initialized' do
