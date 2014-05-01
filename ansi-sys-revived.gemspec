@@ -1,11 +1,11 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'ansisys'
+require 'ansi-sys/ansisys-version'
 
 Gem::Specification.new do |s|
   s.name = 'ansi-sys-revived'
   s.platform = Gem::Platform::RUBY
-  s.version = AnsiSys::VERSION::STRING
+  s.version = AnsiSys::Version::STRING
   s.summary = 'A library to render texts with ANSI escape sequences. Revived from RubyForge.'
   s.license = 'GNU GPLv3'
   s.homepage = 'https://github.com/Nowaker/ruby-ansi-sys-revived'

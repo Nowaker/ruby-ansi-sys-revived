@@ -11,14 +11,6 @@ require 'webrick'
 require 'nkf'
 
 module AnsiSys
-	module VERSION	#:nodoc:
-		MAJOR = 1
-		MINOR = '0'
-    PRE = true
-
-		STRING = [MAJOR, MINOR].join('.') + (PRE ? '.pre' : '')
-	end
-
 	module CSSFormatter
 		# make a CSS style-let from a Hash of CSS settings
 		def hash_to_styles(hash, separator = '; ')
