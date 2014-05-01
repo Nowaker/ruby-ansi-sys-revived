@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'spec_helper'
 
 
@@ -163,3 +164,4 @@ _SCREEN
 		css.should include('background-color: black;')
 	end
 end
+

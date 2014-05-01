@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'spec_helper'
 
 
@@ -32,8 +33,7 @@ end
 
 describe "Wide-characters echoed on right edge of a Screen" do
 	before do
-		$KCODE = 'u'
-		@string = "\346\227\245\346\234\254\350\252\236"	# `Nihongo' in UTF-8
+		@string = '日本語'
 		@char = Characters.new(@string, SGR.new)
 		@screen = Screen.new(Screen.default_css_colors, 3)
 		@cursor = Cursor.new(1, 1, 3)
@@ -48,3 +48,4 @@ describe "Wide-characters echoed on right edge of a Screen" do
 _SCREEN
 	end
 end
+

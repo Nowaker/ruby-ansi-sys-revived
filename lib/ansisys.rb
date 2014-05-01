@@ -1,3 +1,4 @@
+# coding: utf-8
 #
 # = ansisys.rb
 # ANSI terminal emulator
@@ -11,11 +12,11 @@ require 'nkf'
 
 module AnsiSys
 	module VERSION	#:nodoc:
-		MAJOR = 0
-		MINOR = 8
-		TINY = 4
+		MAJOR = 1
+		MINOR = '0'
+    PRE = true
 
-		STRING = [MAJOR, MINOR, TINY].join('.')
+		STRING = [MAJOR, MINOR].join('.') + (PRE ? '.pre' : '')
 	end
 
 	module CSSFormatter
@@ -116,8 +117,8 @@ module AnsiSys
 
 		# echo the string onto the _screen_ with initial cursor as _cursor_
 		# _cursor_ position will be changed as the string is echoed
-		def echo_on(screen, cursor, kcode = nil)
-			each_char(kcode) do |c|
+		def echo_on(screen, cursor)
+			each_char do |c|
 				w = width(c)
 				cursor.fit!(w)
 				screen.write(c, w, cursor.cur_col, cursor.cur_row, @sgr.dup)
@@ -128,23 +129,28 @@ module AnsiSys
 
 		private
 		# iterator on each character
-		def each_char(kcode, &block)
-			@string.scan(Regexp.new('.', nil, kcode)).each do |c|
+		def each_char(&block)
+			@string.scan(Regexp.new('.', nil)).each do |c|
 				yield(c)
 			end
 		end
 
 		# width of a character
 		def width(char)
+      # Terminals use monospaced fonts - no char can take 1.5 of space.
+      # Japanese characters take about ~1.5 in GUI, but take 2 in the terminal.
+      # There is no way Ruby can know it, so I'm making a simplification.
+      # 3 bytes long -> 2 cursors long, 2 bytes long -> 1 cursor long.
+      # This is because Japanese and Chinese chars are all 3 bytes long.
+      # It's better to overestimate the cursor length than underestimate.
+
+      # The previous code for Ruby 1.8 was not ideal - Polish characters
+      # would be incorrectly considered 2 chars long which.
 			if WIDTHS.has_key?(char)
-				return WIDTHS[char]
-			end
-			case char.size	# expecting number of bytes
-			when 1
-				return 1
-			else
-				return 2
-			end
+        WIDTHS[char]
+      else
+        char.bytesize <= 2 ? 1 : 2
+      end
 		end
 	end
 
@@ -613,10 +619,10 @@ module AnsiSys
 		# renders the echoed data as _format_ of :html or :text.
 		# _max_col_, _max_row_ can be specified as Integer.
 		# _colors_ can be Screen.default_css_colors(_inverted_, _bright_).
-		def render(format = :html, max_col = 80, max_row = nil, colors = Screen.default_css_colors, css_class = nil, css_style = nil, kcode = nil)
+		def render(format = :html, max_col = 80, max_row = nil, colors = Screen.default_css_colors, css_class = nil, css_style = nil)
 			css_class ||= 'screen'
 			kcode ||= Guess.kcode(@lexer.buffer)
-			screens = populate(format, max_col, max_row, colors, kcode)
+			screens = populate(format, max_col, max_row, colors)
 			separator = case format
 			when :html
 				"\n"
@@ -696,7 +702,7 @@ module AnsiSys
 		end
 
 		private
-		def populate(format = :html, max_col = 80, max_row = nil, colors = Screen.default_css_colors, kcode = nil)
+		def populate(format = :html, max_col = 80, max_row = nil, colors = Screen.default_css_colors)
 			@cursor = Cursor.new(1, 1, max_col, max_row)
 			@stored_cursor = nil
 			@screens = [Screen.new(colors, max_col, max_row)]
@@ -705,7 +711,7 @@ module AnsiSys
 			@stream.each do |type, payload|
 				case type
 				when :string
-					Characters.new(payload, @sgr).echo_on(@screens[-1], @cursor, kcode)
+					Characters.new(payload, @sgr).echo_on(@screens[-1], @cursor)
 				when :code
 					unless Lexer::PARAMETER_AND_LETTER =~ payload
 						raise AnsiSysError, "Invalid code: #{payload.inspect}"
@@ -747,6 +753,7 @@ if defined?(Hiki) and Hiki::Plugin == self.class
 
 		terminal = AnsiSys::Terminal.new
 		terminal.echo(data)
-		return terminal.render(:html, max_col, nil, colors, 'screen', styles, 'e') + "\n"
+		return terminal.render(:html, max_col, nil, colors, 'screen', styles) + "\n"
 	end
 end
+

@@ -60,7 +60,7 @@ $ bundle exec rake spec
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. [Create a pull request](https://github.com/Nowaker/ruby-ansi-sys-revived/compare/)
-6. Include this text in the description: `The hereby license my code under GNU GPL v3.`
+6. Include this text in the description: `I hereby license the submitted code under GNU GPL v3.`
 7. Thanks!
 
 

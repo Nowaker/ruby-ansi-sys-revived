@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'spec_helper'
 
 
@@ -22,14 +23,13 @@ describe Characters, "when rendered at the right edge" do
 	end
 end
 
-describe Characters, "with Japanese characters" do
+describe Characters, "with Polish UTF-8 characters" do
 	before do
-		$KCODE = 'u'
-		echo("\346\227\245\346\234\254\350\252\236", 1, 1)	# `Nihongo' in UTF-8
+		echo('ąść', 1, 1)
 	end
 
-	it "sohuld assume each occupies 2 columns" do
-		@cursor.cur_col.should == 7
+	it "should assume three characters occupy 3 columns" do
+		@cursor.cur_col.should == 1 + 3
 	end
 end
 
@@ -38,8 +38,9 @@ describe Characters, "with tab" do
 		echo("\t", 1, 1)
 	end
 
-	it "sohuld assume it occupies 8 columns" do
-		@cursor.cur_col.should == 9
+	it "should assume it occupies 8 columns" do
+		@cursor.cur_col.should == 1 + 8
 	end
 end
+
 

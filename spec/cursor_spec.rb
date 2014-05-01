@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'spec_helper'
 
 
@@ -160,4 +161,5 @@ describe Cursor, 'when advanced' do
 	end
 	
 end
+
 

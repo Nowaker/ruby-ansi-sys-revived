@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'spec_helper'
 
 
@@ -135,12 +136,12 @@ describe SGR, 'to be rendered in HTML' do
     @sgr.css_styles.should == {'color' => ['green']}
 	end
 
-	it "shuold show underline for ANSI single underline" do
+	it "should show underline for ANSI single underline" do
     @sgr.apply_code!('m', 4)
     @sgr.css_styles.should == {'text-decoration' => ['underline']}
 	end
 
-	it "shuold show underline for ANSI double underline" do
+	it "should show underline for ANSI double underline" do
     @sgr.apply_code!('m', 4)
     @sgr.css_styles.should == {'text-decoration' => ['underline']}
 	end
@@ -170,3 +171,4 @@ describe SGR, 'to be rendered in HTML' do
     @sgr.css_styles.should == {'color' => ['black']}
 	end
 end
+

@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'spec_helper'
 require 'nkf'
 
@@ -49,3 +50,4 @@ describe "As a Hiki plugin" do
 		@plugin.ansi_screen('test_utf8.txt').should be_true
 	end
 end
+

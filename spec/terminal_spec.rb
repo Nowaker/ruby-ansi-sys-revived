@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'spec_helper'
 
 
@@ -151,22 +152,22 @@ describe Terminal, 'when code SU is sent' do
 		@terminal.echo("red\ngreen\n\nrefactor\e[2;2H")
   end
 
-	it 'shuold scroll down by one line with a code S' do
+	it 'should scroll down by one line with a code S' do
 		@terminal.echo("\e[S")
 		@terminal.render(:text).should == "green\n\nrefactor"
 	end
 
-	it 'shuold scroll down by one line with a code 1S' do
+	it 'should scroll down by one line with a code 1S' do
 		@terminal.echo("\e[1S")
 		@terminal.render(:text).should == "green\n\nrefactor"
 	end
 
-	it 'shuold scroll down by two lines with a code 2S' do
+	it 'should scroll down by two lines with a code 2S' do
 		@terminal.echo("\e[2S")
 		@terminal.render(:text).should == "\nrefactor"
 	end
 
-	it 'shuold append a line at the bottom after S' do
+	it 'should append a line at the bottom after S' do
 		@terminal.echo("\e[2SX")
 		@terminal.render(:text).should == "\nrefactor\nX"
 	end
@@ -178,22 +179,22 @@ describe Terminal, 'when code SD is sent' do
 		@terminal.echo("red\ngreen\n\nrefactor\e[2;2H")
   end
 
-	it 'shuold scroll up by one line with a code T' do
+	it 'should scroll up by one line with a code T' do
 		@terminal.echo("\e[T")
 		@terminal.render(:text).should == "\nred\ngreen\n\nrefactor"
 	end
 
-	it 'shuold scroll up by one line with a code 1T' do
+	it 'should scroll up by one line with a code 1T' do
 		@terminal.echo("\e[1T")
 		@terminal.render(:text).should == "\nred\ngreen\n\nrefactor"
 	end
 
-	it 'shuold scroll up by two lines with a code 2T' do
+	it 'should scroll up by two lines with a code 2T' do
 		@terminal.echo("\e[2T")
 		@terminal.render(:text).should == "\n\nred\ngreen\n\nrefactor"
 	end
 
-	it 'shuold append a line at the top after T' do
+	it 'should append a line at the top after T' do
 		@terminal.echo("\e[2TX")
 		@terminal.render(:text).should == "X\n\nred\ngreen\n\nrefactor"
 	end
@@ -224,3 +225,4 @@ describe Terminal, 'when only code RCP is sent' do
 		@terminal.render(:text).should == "red\ngdone\nrefactor"
 	end
 end
+

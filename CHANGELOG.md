@@ -1,3 +1,8 @@
+# 1.0.0 not-yet-released
+
+- total clean-up
+- fix UTF-8 issues
+
 # 0.8.4 2014-04-26
 
 - Revived from RubyForge as ansi-sys-revived

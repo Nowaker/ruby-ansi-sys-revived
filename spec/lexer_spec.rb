@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'spec_helper'
 
 
@@ -93,3 +94,4 @@ describe Lexer do
 	end
 
 end
+
