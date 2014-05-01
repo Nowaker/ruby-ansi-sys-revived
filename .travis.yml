@@ -10,6 +10,7 @@ script:
 - bundle exec rake spec
 addons:
   code_climate:
-    repo_token: "Opc0FW8gjJzf0EONWVZb7awIB+RMa3RNmXtxt+gJVwOv7aTvpcub6lFoK9SHykD1N1SdZwCjto1AuEKZmXHkwSjyOOjgZC7rtQzkg5zg+J4gqOs/bQrA6CqdGhgMpCscqUI8O5MPTHDNlOWaKASaGjMokv1H5FdoLCdc1OZId7U="
+    repo_token:
+      secure: "VdoAWFJEZEvvSgZV4KZ5Wp+YSQGl4v8bFEmpCKRT3vIdOE3ezQb/h6DulWh8KL1mX1SGgWN4cqxi4k830WUmnxaX3lq1LV+QXmgVtSqx5qMJdDk6ax01/w+DRX/vvxnMT2EgyMchD7OAb7EmmSkvzDp108sd7jxfoMy2VVqKQNQ="
 notifications:
   email: false
