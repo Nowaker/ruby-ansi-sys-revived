@@ -4,6 +4,7 @@
 [![GPA](https://img.shields.io/codeclimate/github/Nowaker/ruby-ansi-sys-revived.svg)](https://codeclimate.com/github/Nowaker/ruby-ansi-sys-revived)
 [![Code coverage](https://img.shields.io/codeclimate/coverage/github/Nowaker/ruby-ansi-sys-revived.svg)](https://codeclimate.com/github/Nowaker/ruby-ansi-sys-revived)
 [![Build status](https://img.shields.io/travis/Nowaker/ruby-ansi-sys-revived.svg)](https://travis-ci.org/Nowaker/ruby-ansi-sys-revived)
+[![Dependcies status](http://img.shields.io/gemnasium/Nowaker/ruby-ansi-sys-revived.svg)](https://gemnasium.com/Nowaker/ruby-ansi-sys-revived)
 
 ansi-sys-revived is a Ruby library to render texts with ANSI escape sequences.
 Convert your colorful shell output to HTML code.
