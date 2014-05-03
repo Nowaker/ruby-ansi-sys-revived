@@ -26,7 +26,7 @@ Then execute:
 $ bundle
 ```
 
-Gem requires Ruby 1.9.3 to function.
+Gem works on Ruby 1.9.3, 2.0 and 2.1. Use original [ansi-sys](https://rubygems.org/gems/ansi-sys) for Ruby 1.8.
 
 ## Usage
 
